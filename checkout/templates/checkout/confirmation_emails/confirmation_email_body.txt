@@ -1,0 +1,27 @@
+Greetings {{ order.full_name }} and thank you for your order!
+
+Woo hoo! Your order is on its way. Your order details can be found below.
+
+ORDER SUMMARY: 
+
+Order #: {{ order.order_number }}
+Order Date: {{ order.date }}
+Order Total: £{{ order.order_total }}
+
+SHIPPING ADDRESS: 
+
+Address line 1: {{ order.street_address1 }}
+Town or City: {{ order.town_or_city }}
+County: {{ order.county }}
+Country:{{ order.country }}
+Contact: {{ order.phone_number }}
+
+We hope you enjoyed your shopping experience with us.
+If you have any questions, feel free to contact us on {{ contact_email }}.
+We will be more than happy to help.
+
+We hope you visit us again soon!
+
+Sincerely, 
+
+Riss Jewels & Designs

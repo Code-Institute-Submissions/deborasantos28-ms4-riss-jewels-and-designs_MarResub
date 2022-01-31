@@ -1,1 +1,1 @@
-web: gunicorn boutique_ado.wsgi:application
+web: gunicorn ms4_riss_jewels_and_designs.wsgi:application

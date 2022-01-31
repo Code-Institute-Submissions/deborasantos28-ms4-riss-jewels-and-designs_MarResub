@@ -27,7 +27,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['ms4-riss-jewels-and-designs.herokuapp.com', 'localhost']
-]
 
 
 # Application definition

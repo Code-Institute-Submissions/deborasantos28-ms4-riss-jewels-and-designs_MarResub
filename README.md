@@ -1,3 +1,35 @@
+<h1 align="center">Welcome to <strong>Riss Jewels & Designs</strong></h1>
+
+(Am I responsive img here)
+
+# About
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # User Stories
 
 | As A/An | I want to be able to:   | So that I can:   |   |   |

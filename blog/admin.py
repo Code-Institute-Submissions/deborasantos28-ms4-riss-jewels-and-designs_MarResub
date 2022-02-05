@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import BlogEntry, Comments
+from .models import BlogEntry, Comment
 
 
 class CommentInline(admin.TabularInline):
-    model = Comments
+    model = Comment
     extra = 0
 
 
@@ -19,4 +19,4 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(BlogEntry, BlogEntryAdmin)
-admin.site.register(Comments, CommentsAdmin)
+admin.site.register(Comment, CommentAdmin)

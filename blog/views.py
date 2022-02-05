@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
 
 from .models import BlogEntry
-from .forms import CommentsForm, BlogEntryForm
+from .forms import CommentForm, BlogEntryForm
 
 
 def blog_entry(request):
@@ -24,27 +24,27 @@ def blog_detail(request, slug):
     new_comment = None
 
     if request.method == 'POST':
-        comment_form = CommentsForm(request.POST)
-        if comments_form.is_valid():
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
             # Creates new_comment object (doesn't save it)
-            new_comment = comments_form.save(commit=False)
+            new_comment = comment_form.save(commit=False)
             # Assigns the value of what blogpost the user is on
-            new_comment.post = blog_post
+            new_comment.post = blog_entry
             # Assigns the username (must be logged in to comment)
             new_comment.username = request.user
             new_comment.save()
             messages.info(request, 'Your message has been posted successfully!')
-            return redirect(reverse('blog_descriptions', args=[blog_post.slug]))
+            return redirect(reverse('blog_descriptions', args=[blog_entry.slug]))
         else:
             messages.error(request, 'Failed to post your comment. Check that \
                 the post is valid and try again.')
     else:
-        comment_form = CommentsForm()
+        comment_form = CommentForm()
 
     context = {
         'blog_entry': blog_entry,
         'comments': comments,
-        'comments_form': comments_form,
+        'comment_form': comment_form,
     }
 
     return render(request, 'blog/blog_descriptions.html', context)

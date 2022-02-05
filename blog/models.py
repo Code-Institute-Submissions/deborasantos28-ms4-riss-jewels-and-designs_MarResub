@@ -23,7 +23,7 @@ class BlogEntry(models.Model):
         return self.title
 
 
-class Comments(models.Model):
+class Comment(models.Model):
 
     post = models.ForeignKey(BlogEntry, on_delete=models.CASCADE,
                              related_name='comments')

@@ -235,7 +235,7 @@
     * Checked that at the top of the page a banner informing the user how much more they need to spend to qualify for free delivery is shown.
     * Checked that if items in the basket are equivalent to or over £20 then the user is informed that they qualified for free delivery
     
-    * Checked that if items do exist in the cart then each individual item line has its own row with the following details:
+    * Checked that if items do exist in the basket then each individual item line has its own row with the following details:
         1. Product Image (only displayed for big and medium screens, on smaller it's hidden)
         2. Checked this links back to individual product page.
         3. Product info and Sku number should always be on display
@@ -253,11 +253,216 @@
     5. Checked the free next day delivery banner adjusts accordingly
 
 * Pressed the remove link:
-    1. Checked that the item is removed from the cart and is no longer displayed.
+    1. Checked that the item is removed from the basket and is no longer displayed.
     2. Seen that the toast message appears confirming the removal.
-    3. Checked the rest of the cart reacts accordingly.
+    3. Checked the rest of the basket reacts accordingly.
     4. Checked that the subtotal is always displayed.
     5. Tested that each row is responsive to screen width and the most important information is always displayed.
     6. Checked the totals are shown underneath the last row and are done so in a clear and obvious manner.
 
 * Pressed the checkout button at the bottom, this takes me to the checkout page.
+
+* Expected Outcome:
+    * When the basket is empty the Shopping Basket title header should be displayed, along with the message that the basket is empty and the button to Keep Shopping wich takes the user back to the products page
+    * The banner with the free delivery rate should be displayed at the top of the page
+    * If the items in the basket are pass the free delivery threshold or not, a smaller message banner should be displayed to inform the user
+    * When items are in the basket, each item should have it's own rown with their correct descriptions, info and price
+    * The incrementative and decrementative buttons should update accordingly and stopping at their correct limits
+    * The update button should update the quantity of products accordingly and display the correct updated amount
+    * The remove button should remove the product from the basket and should not be displayed
+    * A toast message confirming the deletion of the product from the basket
+    * Each Row should be responsive in each screen size
+    * The checkout button should take the user through to the checkout page
+
+ 
+* Test Outcome: **Pass**
+
+
+# Checkout:
+
+* Test Action
+    * Tested that each page is fully respTonsive and all fields are displayed correctly
+    * Checked that the order summary section corresponds to the Product items and details in the basket
+    * Checked that each line item is listed and matches that of what was in the basket.
+    * Checked that the subtotal, delivery and grand total all match. 
+    * Checked that basket button takes the user back to the basket page if anything needs to changed.
+    * Checked that the form to is divided into three section:
+        1. Users details 
+        2. Delivery information 
+        3. Payment details
+    
+    * The User Details section:
+        * Is compiled of three input fields: *full name, *email and *phone number. Fields marked with a * are required in order to submit the form.
+        * Checked if not a registered user all the fields will be blank showing the placeholders only.
+        * Checked if the user is registered and returning customer, the fields will be pre-filled with the information that was previously used and stored from previous orders saved on this users profile.
+    
+    * Delivery Information:
+        * Is compiled of five input fields: *address, *town, county, postcode and *country. Fields marked with a * are required in order to submit the form.
+        * Checked if not a registered user all the fields will be blank showing the placeholders only.
+        * Checked if the user is registered and returning customer, the fields will be pre-filled with the information that was previously used and stored from previous orders saved on this users profile.
+    
+    * Payment Details
+        * Checked that the field that takes the card number, the MM/YY and CVC number is blank to begin with
+        * Checked that this field is required
+        * Checked the form validates properly by:
+            1. Attempting to send an empty form.
+            2. Attempting to send the form whilst leaving any of the * fields empty.
+            3. Checking that the email field only accepts something with an @ in it.
+            4. Attempted to send while leaving the payment field empty. This causes a validation error sent from Stripe.
+            5. Checked that depending on the user status a link to log in or sign up will be displayed or a check box to save the information is shown after the delivery details.
+            6. Clicked the log in link.
+            7. Clicked the sign up link.
+            8. Toggled the checkbox to test it works and appears for registered users only.
+            9. Checked that two buttons appear at the bottom of the screen along with a confirmation of the total:
+            10. Checked the hover classes works.
+            11. Checked that the amounts match.
+            12. Adjust basket button takes the user back to the basket page so that proper adjustments can be made
+            13. Pressing the place order button starts the checkout / Stripe’s payment process.
+            14. Checked the order processing overlay appears to show that the payment is being processed
+            15. On successful completion of the order I was sent to the order success page where a summary of the order is displayed.
+        * Checked the page is responsive and the forms display correctly on all screen sizes.
+    
+    
+    * Order confirmation:
+        * Checked confirmation page loads as expected.
+        * Checked that a message is displayed informing that the confirmation has been sent.
+        * A success toast is displayed confirming the order.
+    * All information on the confirmation page is relevant and correct:
+        1. Order info (order number and order date) is displayed
+        2. Delivery info (address and contact number) is displayed
+        3. Order details are displayed
+        4. Billing details (subtotal, delivery and total) are displayed
+    * Checked that a comfirmation email was sent and received
+    * Checked on the Stripe page that the payment has been taken
+    * Checked the order is now displayed on Stripe's page and in the database
+    * Checked that if it's a registered user the order is displayed on the users profile under order history.
+    * Checked if the users delivery information is saved.
+    * If box is ticked then existing information is overwritten.
+    * If it’s left unticked no information will get stored.
+    * Checked that the page is responsive on all screen sizes.
+
+* Expected Outcome
+    * Each Page should be fully responsive
+    * Order summary should correspond with the Product items and details in the basket
+    * Check that all sections match and are displayed correctly in the basket
+    * The form should be responsive and divided into it's correct sections
+    * The form should be able to go through correctly with no errors
+    * The users details should be stored for a next order, so that the fields can be automatically filled on the next order.
+    * An Order confirmation email should be sent to the user when the order is complete
+    * The form should not be submitted unless all fields are correctly filled in
+    * The payment should be able to go through and be displayed on stripe database
+    * All toast messages should be displayed correctly and accordingly
+
+
+* Test Outcome: **Pass**
+
+* Test Action
+    * Profile
+        * Checked if the page is only accessible to registered users.
+        * Checked if the the user’s username appears in the title.
+        * Checked that the page is divided into two sections:
+            1. Saved delivery information form.
+            2. Form compiled of five input fields: 
+                * address, town or city, county, postcode and country. All fields being non required.
+    
+    * Checked that if the user has default delivery information already saved to their account then the form should retrieve the users information already in memory.
+    * Checked that if the user has no default delivery information saved to their account then the form should be blank showing the placeholders only, and after the order, the user's information should be stored in their profile.
+    * Checked if the User is able to update their details.
+    * Checked if the toast success appears confirming this information has been saved.
+    * Checked if the Order history is displayed correctly.
+    * Checked that the details of all previous orders made by that user are displayed on their profile including:
+        * Date and time of order.
+        * Order number.
+        * Order total.
+    * The order number acts is used as link to the order’s confirmation page.
+        1. When clicked the order confirmation page loads and all details are correct and present.
+        2. A toast message appears to say this was a past order.
+    * Back to profile button works correctly.
+    * Checked that the page is responsive and everything stacks on top on one another at widths below 768px.
+
+
+* Expected Outcome
+    * Only registered users should be able to access the profile page
+    * The users name should be displayed on their Profile
+    * If not a registered user, the option of registering should be displayed as blank fields
+    * The user should be able to update their information or details
+    * The user should be able to check their past orders and order history
+    * All toast messages should display correctly
+    * All buttons should take the user back to the correct pages
+    * The page and the forms should be responsive in all screen sizes
+
+
+* Test Outcome: **Pass**
+
+# Add Products Page:
+### Restricted to Admin only
+
+* Test Action
+    * Checked that the form is accessible by admin only.
+    * Checked that the form is accessible via the link in the navigation bar (admin only).
+    * Checked the number of fields, 8 in total: category, sku, name, has sizes, price, rating, description and image. Checked all have a relevant label.
+    * Checked that choosing an image and pressing the button to add it works properly
+    * Tried adding a product by sending an empty form. Input required error message is displayed
+    * Checked if the form accepted data correctly. 
+    * Checked if selecting a Category where the product has no sizes if it would still be possible to add sizes
+    * Checked that the form will only go through if all fields marked with a * are filled in.
+    * Checked that that adding sizes displays the correct input.
+    * Checked a category name can be selected from the dropdown menu.
+    * Upon the successful submission of the form the admin user will get redirected to the newly created products detail page.
+    * Checked that a toast success will be displayed confirming that the product has been added.
+    * Checked that the product now appears in the admin.
+    * Checked that the item displays correctly on the main website.
+
+
+* Expected Outcome
+    * All adding functionality is only accessible by the Admin
+    * Be able to add product to the site correctly and easily
+    * The new product should not be submitted if required fields are left blank
+    * A size should be able to be added to a product unless the product has no sizes
+    * A Category name is selected correctly from the dropdown menu
+    * The admin user should be redirected to the newly created product details page, upon a successfully completed form
+    * All toasts should display correctly
+    * The item should display correctly throughout the website
+
+
+* Test Outcome: **Pass**
+
+# Editing a Product:
+## Restricted to Admin only
+
+* Test Action
+    * Checked that the form is accessible by admin only.
+    * Checked that the form is accessible via the edit button underneath each product (admin only).
+    * Checked that a toast message is displayed confirming that the admin is now editing the product.
+    * Checked that the form is compatible with the one found on the add product page but all fields are pre-filled with the existing data.
+    * Checked that all buttons work as they should
+    * Checked choosing image button works properly and let's you add an image
+    * Checked that the update product, the updated product loads correctly
+    * Checked that a success toast will be shown when finished updating.
+    * Tested that the form still validated the new data correctly. The form will then only send if all fields that are required are filled in.
+    * Checked that on success of completing the form the Admin User will get redirected to the product that has been edited, But with the updated information now being displayed.
+
+* Expected Outcome
+    * All editing functionality is only accessible by the Admin
+    * Be able to edit product on the site correctly and easily
+    * The edited product will not be submitted if required fields are left blank
+    * All fields should be pre-filled with the correct information of the product when editing
+    * The admin user should be redirected to the edited product page, upon a successfully updated form
+    * All toasts should display correctly
+    * The item should display correctly throughout the website
+
+* Test Outcome: **Pass**
+
+# Deleting a product:
+## Restricted to Admin only
+
+* Test Action
+    * Checked that the delete functionality is accessible by the Admin only.
+    * Checked that the button is displayed underneath the product.
+    * When a product is deleted, the Admin user redirected back to the products page.
+    * A toast message appears confirming the deletion.
+    * Checked that it can no longer be found on the site.
+    * Checked that it can no longer be found in the database.
+
+
+

@@ -44,7 +44,7 @@
 
 * Test Outcome: **Pass**
 
-# Navigation / Search Bar
+## Navigation / Search Bar
 
 * Test Action
     * Searched for specific key values with the database and checked if it retrieved the values searched
@@ -66,7 +66,7 @@
 
 * Test Outcome: **Pass**
 
-# Navigation / Icons
+## Navigation / Icons
 
 * Test Action
     * Clicked on all three links on the My profile section:
@@ -91,7 +91,7 @@
 
 * Test Outcome: **Pass**
 
-# Navigation / Links and Display
+## Navigation / Links and Display
 
 * Test Action 
     * Clicked on all the links to ensure that they all do their respective functionality.
@@ -120,7 +120,7 @@
 * Test Outcome: **Pass**
 
 
-# Home
+## Home
 
 * Test Action
     * Made sure that the background image is displayed and centered and per expected.
@@ -143,7 +143,7 @@
 * Test Outcome: **Pass**
 
 
-# Products Page
+## Products Page
 
 * Test Action
     * Checked that all pages are correctly categorized with the correct Categories and subcategories. Such as:
@@ -194,7 +194,7 @@
 
 * Test Outcome: **Pass**
 
-# Individual Product Detail
+## Individual Product Detail
 
 * Test Action
     * Checked that the correct product is displayed when clicking on the image of the product
@@ -227,7 +227,7 @@
 * Test Outcome: **Pass**
 
 
-# Basket
+## Basket
 
 * Test Action
     * Checked that when the basket is empty it displays the *Shopping Basket* header and displays a message underneath telling the user that their basket is empty. 
@@ -278,7 +278,7 @@
 * Test Outcome: **Pass**
 
 
-# Checkout:
+## Checkout:
 
 * Test Action
     * Tested that each page is fully respTonsive and all fields are displayed correctly
@@ -394,7 +394,7 @@
 
 * Test Outcome: **Pass**
 
-# Add Products Page:
+## Add Products Page:
 ### Restricted to Admin only
 
 * Test Action
@@ -427,7 +427,7 @@
 
 * Test Outcome: **Pass**
 
-# Editing a Product:
+## Editing a Product:
 ## Restricted to Admin only
 
 * Test Action
@@ -453,7 +453,7 @@
 
 * Test Outcome: **Pass**
 
-# Deleting a product:
+## Deleting a product:
 ## Restricted to Admin only
 
 * Test Action
@@ -466,3 +466,95 @@
 
 
 
+# User Stories
+
+## As a shopper I'd like to be able to:
+### View and Navigation
+
+1. Be able to view a list of products:
+    * So that I can buy some.
+
+2. Be able to view a specific category of product:
+    * So that I can quickly find the products I'm looking for without having to search through all the products.
+
+3. Be able to view a product's details individualy:
+    * So that I am able to identify the product's price, description, sizes, rating and image.
+
+4. Be able to quickly pick out any deals, clearence items or special offers:
+    * Be able to purchase product's I'd like at a reduce price.
+
+5. Be able to easily view the total quantity of my purchases at any time:
+    * To be able to avoid spending wrecklessly
+
+
+## As a Site User I'd like to be able to:
+### Registration and Accounts
+
+1. Be able to create an account easily:
+    * So that I am able to have a personal account and be able to view my profile.
+
+2. Easily be able to log in and out:
+    * So that I am able to access my personal user account and my personal information
+
+3. Be able to recover my password in case I forget it or lose it:
+    * So that I am able to access my account again.
+
+4. Be notified with an email confirmation after registering:
+    * So that I know that my registration was successful.
+
+5. Have a personalized user profile:
+    * So That I am able to access my personal order history and order confirmation, and be able to store my card details for a faster checkout.
+
+## As a shopper I'd like to be able to:
+### Sorting and Searching
+
+1. Be able to sort the list of available products:
+    * So that I can easily access the best priced and rated, and be able to sort through products categorically.
+
+2. Be able to sort a specific category of products:
+    * So that I am able to find the best deals in a specific category or be able to sort the products in that specific category name.
+
+3. Be able to sort multiple categories of products at the same time:
+    * So that I am able to find the best priced or best rated products across the main categories, such as Jewelry and Homeware.
+
+4. Be able to search for a product by name or description:
+    * So that I can locate a specific product I'd like to buy.
+
+5. Be able to easily see what I searched for and the number of results of my search:
+    * So that I can quickly know if the product I'd like is in stock.
+
+## As a shopper I'd like to be able to:
+### Purchase and Checkout
+
+1. Be able to easily select the size and quantity of a product when buying it:
+    * So that I can ensure that I don't accidently choose the wrong size, wrong product or add too many items. 
+
+2. Be able to clearly view the items I intend to purchase in my basket:
+    * So that I am informed about the total cost of my purchase and the items that I wil be receiving.
+
+3. Be able to adjust the quantity of individual items in my basket:
+    * So that I can easily be able to make changes to my purchase before going through checkout.
+
+4. Be able to enter my payment details easily:
+    * So that I am able to pay for my order with no hassle.
+
+5. To feel like my payment details and personal information is safe and secure:
+    * So that I am able to give the needed information to make the purchase without worrying.
+
+6. Be able to view my order confirmation after checkout:
+    * So that I can make sure I haven't made any mistakes on my order.
+
+7. Be able to receive an email confirmation after my purchase:
+    * So that I can keep the confirmation of what I purchase for my own records.
+
+## As a Store Owner I'd like to be able to:
+### Admin and Store Management 
+
+1. Be able to add a product:
+    * So that I am able to add new products to my store.
+
+2. Be able to edit and update a product:
+    * So that I am able to alter the products descriptions, prices, images and other product criteria.
+
+3. Be able to delete a product:
+    * So that I am able to remove items that are no longer on sale or have sold out.

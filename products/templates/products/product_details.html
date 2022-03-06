@@ -37,12 +37,13 @@
                     </a>
                 </p>
                 {% endif %}
+
                 {% if product.rating %}
                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
                 {% if user.is_authenticated %}
                 {% if canAdd %}
-                <button type="button" data-target="#productReview" class="btn btn-outline-black rounded-0 btn-sm">Add
-                    Review</button>
+                <button type="button" data-target="#productReview" class="btn btn-outline-black rounded-0 btn-sm">
+                    Add Review</button>
                 {% endif %}
                 {% endif %}
 
@@ -79,7 +80,7 @@
                 {% endif %}
                 <div class="card">
                     <div class="card-body review-list" style="max-height: 400px; overflow: auto;">
-                        <!-- Detail -->
+                        
                         {% if reviews %}
                         {% for review in reviews %}
                         <blockquote class="blockquote text-right">
@@ -101,6 +102,7 @@
                 </div>
             </div>
         </div>
+
         {% else %}
         <small class="text-muted">No Rating</small>
         {% endif %}

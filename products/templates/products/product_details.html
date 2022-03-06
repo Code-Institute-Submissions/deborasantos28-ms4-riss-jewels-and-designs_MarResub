@@ -39,79 +39,186 @@
                 {% endif %}
                 {% if product.rating %}
                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                {% else %}
-                <small class="text-muted">No Rating</small>
+                {% if user.is_authenticated %}
+                {% if canAdd %}
+                <button type="button" data-target="#productReview" class="btn btn-outline-black rounded-0 btn-sm">Add
+                    Review</button>
                 {% endif %}
-                {% if request.user.is_superuser %}
-                    <small class="ml-3">
-                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                    </small>
                 {% endif %}
-                <p class="mt-3">{{ product.description }}</p>
-                <form class="form" action="{% url 'add_to_basket' product.id %}" method="POST">
-                    {% csrf_token %}
-                    <div class="form-row">
-                        {% with product.has_sizes as d %}
-                        {% if d %}
-                        <div class="col-12">
-                            <p><strong>Size:</strong></p>
-                            <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
-                                <option value="xs">XS</option>
-                                <option value="s">S</option>
-                                <option value="m" selected>M</option>
-                                <option value="l">L</option>
-                                <option value="xl">XL</option>
-                            </select>
-                        </div>
-                        {% endif %}
-                        <div class="col-12">
-                            <p class="mt-3"><strong>Quantity:</strong></p>
-                            <div class="form-group w-50">
-                                <div class="input-group input-group-{{ product.id }}">
-                                    <div class="input-group-prepend">
-                                        <button class="decrement-qty btn btn-color rounded-0 decrement-qty_{{ product.id }}" 
-                                                data-item_id="{{ product.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                    <input class="form-control qty_input id_qty_{{ product.id }}" type="number" name="quantity" value="1"
-                                        min="1" max="99" data-item_id="{{ product.id }}">
-                                    <div class="input-group-append">
-                                        <button class="increment-qty btn btn-color rounded-0 increment-qty_{{ product.id }}"
-                                                data-item_id="{{ product.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
+
+                <!-- Product Review -->
+                {% if user.is_authenticated %}
+                <div class="modal fade" id="productReview" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add Product Review</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" id="addForm" action="{% url 'save-review' data.id %}">
+                                    {% csrf_token %}
+                                    <table class="table table-bordered">
+                                        {{reviewForm.as_table}}
+                                        <tr>
+                                            <td colspan="2">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <input type="reset" class="btn btn-dark" value="Reset" id="reset" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <p class="ajaxRes"></p>
+                                </form>
                             </div>
                         </div>
-
-                        <div class="col{% if d %}-12 mt-2{% endif %}">
-                            <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
-                                <span class="icon">
-                                    <i class="fas fa-chevron-left"></i>
-                                </span>
-                                <span class="text-uppercase">Keep Shopping</span>
-                            </a>
-                            <input type="submit" class="btn btn-color rounded-0 text-uppercase mt-5"
-                                value="Add to Basket">
-                        </div>
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                        {% endwith %}
                     </div>
-                </form>
+                </div>
+                {% endif %}
+                <div class="card">
+                    <div class="card-body review-list" style="max-height: 400px; overflow: auto;">
+                        <!-- Detail -->
+                        {% if reviews %}
+                        {% for review in reviews %}
+                        <blockquote class="blockquote text-right">
+                            <small>{{review.review_text}}</small>
+                            <footer class="blockquote-footer">{{review.user}}
+                                <cite title="Source Title">
+                                    {% for star in review.review_rating|ljust:review.review_rating %}
+                                    <i class="fa fa-star text-warning"></i>
+                                    {% endfor %}
+                                </cite>
+                            </footer>
+                        </blockquote>
+                        <hr />
+                        {% endfor %}
+                        {% else %}
+                        <p class="no-data">Add First Review</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
+        {% else %}
+        <small class="text-muted">No Rating</small>
+        {% endif %}
+        {% if request.user.is_superuser %}
+        <small class="ml-3">
+            <a href="{% url 'edit_product' product.id %}">Edit</a> |
+            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+        </small>
+        {% endif %}
+        <p class="mt-3">{{ product.description }}</p>
+        <form class="form" action="{% url 'add_to_basket' product.id %}" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                {% with product.has_sizes as d %}
+                {% if d %}
+                <div class="col-12">
+                    <p><strong>Size:</strong></p>
+                    <select class="form-control rounded-0 w-50" name="product_size" id='id_product_size'>
+                        <option value="xs">XS</option>
+                        <option value="s">S</option>
+                        <option value="m" selected>M</option>
+                        <option value="l">L</option>
+                        <option value="xl">XL</option>
+                    </select>
+                </div>
+                {% endif %}
+                <div class="col-12">
+                    <p class="mt-3"><strong>Quantity:</strong></p>
+                    <div class="form-group w-50">
+                        <div class="input-group input-group-{{ product.id }}">
+                            <div class="input-group-prepend">
+                                <button class="decrement-qty btn btn-color rounded-0 decrement-qty_{{ product.id }}"
+                                    data-item_id="{{ product.id }}">
+                                    <span class="icon">
+                                        <i class="fas fa-minus"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <input class="form-control qty_input id_qty_{{ product.id }}" type="number" name="quantity"
+                                value="1" min="1" max="99" data-item_id="{{ product.id }}">
+                            <div class="input-group-append">
+                                <button class="increment-qty btn btn-color rounded-0 increment-qty_{{ product.id }}"
+                                    data-item_id="{{ product.id }}">
+                                    <span class="icon">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col{% if d %}-12 mt-2{% endif %}">
+                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Keep Shopping</span>
+                    </a>
+                    <input type="submit" class="btn btn-color rounded-0 text-uppercase mt-5" value="Add to Basket">
+                </div>
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                {% endwith %}
+            </div>
+        </form>
     </div>
+</div>
+</div>
 </div>
 {% endblock %}
 
 {% block postloadjs %}
+
+<!--Product Review-->
+<script type="text/javascript">
+    $("#addForm").submit(function (e) {
+        $.ajax({
+            data: $(this).serialize(),
+            method: $(this).attr('method'),
+            url: $(this).attr('action'),
+            dataType: 'json',
+            success: function (res) {
+                if (res.bool == true) {
+                    $(".ajaxRes").html('Data has been added.');
+                    $("#reset").trigger('click');
+                    // Hide Button
+                    $(".reviewBtn").hide();
+                    // End
+
+                    // create data for review
+                    var _html = '<blockquote class="blockquote text-right">';
+                    _html += '<small>' + res.data.review_text + '</small>';
+                    _html += '<footer class="blockquote-footer">' + res.data.user;
+                    _html += '<cite title="Source Title">';
+                    for (var i = 1; i <= res.data.review_rating; i++) {
+                        _html += '<i class="fa fa-star text-warning"></i>';
+                    }
+                    _html += '</cite>';
+                    _html += '</footer>';
+                    _html += '</blockquote>';
+                    _html += '</hr>';
+
+                    $(".no-data").hide();
+
+                    // Prepend Data
+                    $(".review-list").prepend(_html);
+
+                    // Hide Modal
+                    $("#productReview").modal('hide');
+
+                    // AVg Rating
+                    $(".avg-rating").text(res.avg_reviews.avg_rating.toFixed(1))
+                }
+            }
+        });
+        e.preventDefault();
+    });
+</script>
 {{block.super}}
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

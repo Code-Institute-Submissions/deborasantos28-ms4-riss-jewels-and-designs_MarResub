@@ -47,3 +47,6 @@ class ProductReview(models.Model):
     product=models.ForeignKey(Product, on_delete=models.CASCADE)
     review_text=models.TextField()
     review_rating=models.CharField(choices=rating,max_length=150)
+
+    def get_review_rating(self):
+        return self.review_rating

@@ -3,13 +3,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
 
-from .models import BlogPost
-from .forms import CommentForm, BlogPostForm
+from .models import BlogEntry
+from .forms import CommentForm, BlogEntryForm
 
 
-def blog_posts(request):
+def blog_entries(request):
     """ A view to return the main blog page """
-    posts = BlogPost.objects.all()
+    posts = BlogEntry.objects.all()
     context = {
         'posts': posts,
     }
@@ -19,7 +19,7 @@ def blog_posts(request):
 
 def blog_detail(request, slug):
     """ A view that returns individual blog posts """
-    blog_post = get_object_or_404(BlogPost, slug=slug)
+    blog_post = get_object_or_404(BlogEntry, slug=slug)
     comments = blog_post.comments.all()
     new_comment = None
 
@@ -28,7 +28,7 @@ def blog_detail(request, slug):
         if comment_form.is_valid():
             # Creates new_comment object (doesn't save it)
             new_comment = comment_form.save(commit=False)
-            # Assigns the value of what blogpost the user is on
+            # Assigns the value of what blog entry the user is on
             new_comment.post = blog_post
             # Assigns the username (must be logged in to comment)
             new_comment.username = request.user
@@ -55,12 +55,12 @@ def add_blog_post(request):
     """ A view to add blog posts to the blog """
     # Allows access to superuser only
     if not request.user.is_superuser:
-        messages.error(request, 'Only Hop Shop Admin have \
+        messages.error(request, 'Only the Admin has \
             access to this page!')
         return redirect(reverse('home'))
 
     if request.method == 'POST':
-        form = BlogPostForm(request.POST, request.FILES)
+        form = BlogEntryForm(request.POST, request.FILES)
         if form.is_valid():
             new_post = form.save(commit=False)
             new_post.author = request.user
@@ -72,7 +72,7 @@ def add_blog_post(request):
             messages.error(request, 'Failed to post your blog post. Check that \
                 the post is valid and try again.')
     else:
-        form = BlogPostForm()
+        form = BlogEntryForm()
 
     context = {
         'form': form,
@@ -86,14 +86,14 @@ def edit_blog_post(request, slug):
     """ A view to edit existing blog posts in the blog """
     # Allows access to superuser only
     if not request.user.is_superuser:
-        messages.error(request, 'Only Hop Shop Admin have \
+        messages.error(request, 'Only the Admin has \
             access to this page!')
         return redirect(reverse('home'))
 
-    blog_post = get_object_or_404(BlogPost, slug=slug)
+    blog_post = get_object_or_404(BlogEntry, slug=slug)
 
     if request.method == 'POST':
-        form = BlogPostForm(request.POST, request.FILES, instance=blog_post)
+        form = BlogEntryForm(request.POST, request.FILES, instance=blog_post)
         if form.is_valid():
             edit_post = form.save(commit=False)
             edit_post.author = request.user
@@ -105,7 +105,7 @@ def edit_blog_post(request, slug):
             messages.error(request, 'Failed to update your blog post. Check that \
                 the post is valid and try again.')
     else:
-        form = BlogPostForm(instance=blog_post)
+        form = BlogEntryForm(instance=blog_post)
         messages.info(request, f'You are editing the blog post \
             "{blog_post.title}"')
 
@@ -122,11 +122,11 @@ def delete_blog_post(request, slug):
     """ A view that deletes a chosen blog post from the blog """
     # Allows access to superuser only
     if not request.user.is_superuser:
-        messages.error(request, 'Only Hop Shop Admin have \
+        messages.error(request, 'Only the Admin has \
             access to this page!')
         return redirect(reverse('home'))
 
-    blog_post = get_object_or_404(BlogPost, slug=slug)
+    blog_post = get_object_or_404(BlogEntry, slug=slug)
     blog_post.delete()
-    messages.success(request, 'Blog post deleted!')
-    return redirect(reverse('blog_posts'))
+    messages.success(request, 'Blog entry deleted!')
+    return redirect(reverse('blog_entries'))

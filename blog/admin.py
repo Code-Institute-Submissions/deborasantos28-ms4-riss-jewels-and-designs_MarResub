@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BlogPost, Comment
+from .models import BlogEntry, Comment
 
 
 class CommentInline(admin.TabularInline):
@@ -7,7 +7,7 @@ class CommentInline(admin.TabularInline):
     extra = 0
 
 
-class BlogPostAdmin(admin.ModelAdmin):
+class BlogEntryAdmin(admin.ModelAdmin):
     list_display = ('date_posted', 'title', 'slug')
     search_fields = ['title', 'content']
     inlines = [CommentInline, ]
@@ -18,5 +18,5 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ['username', 'body']
 
 
-admin.site.register(BlogPost, BlogPostAdmin)
+admin.site.register(BlogEntry, BlogEntryAdmin)
 admin.site.register(Comment, CommentAdmin)

@@ -66,13 +66,14 @@ def product_details(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    reviewForm = ReviewAdd()
+    ReviewForm = ReviewAdd()
     
     context = {
         'product': product,
+        'form': ReviewForm
     }
 
-    return render(request, 'products/product_details.html', {'form':reviewForm}, context)
+    return render(request, 'products/product_details.html', context)
 
 
 @login_required
@@ -147,6 +148,7 @@ def delete_product(request, product_id):
 
 # Save Review
 def save_review(request,pid):
+
 	product=Product.objects.get(pk=pid)
 	user=request.user
 	review=ProductReview.objects.create(

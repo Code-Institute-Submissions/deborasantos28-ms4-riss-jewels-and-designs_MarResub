@@ -63,7 +63,7 @@
                                 <form method="POST" id="addForm" action="{% url 'save-review' data.id %}">
                                     {% csrf_token %}
                                     <table class="table table-bordered">
-                                        {{reviewForm.as_table}}
+                                        {{ReviewForm.as_table}}
                                         <tr>
                                             <td colspan="2">
                                                 <button type="submit" class="btn btn-primary">Submit</button>

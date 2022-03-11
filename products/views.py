@@ -3,8 +3,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category, ProductReview
-from .forms import ProductForm, ReviewAdd
+from .models import Product, Category
+from .forms import ProductForm
 
 # Create your views here.
 
@@ -66,11 +66,9 @@ def product_details(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    ReviewForm = ReviewAdd()
     
     context = {
-        'product': product,
-        'form': ReviewForm
+        'product': product
     }
 
     return render(request, 'products/product_details.html', context)
@@ -146,25 +144,3 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
-# Save Review
-def save_review(request,pid):
-
-	product=Product.objects.get(pk=pid)
-	user=request.user
-	review=ProductReview.objects.create(
-		user=user,
-		product=product,
-		review_text=request.POST['review_text'],
-		review_rating=request.POST['review_rating'],
-		)
-	data={
-		'user':user.username,
-		'review_text':request.POST['review_text'],
-		'review_rating':request.POST['review_rating']
-	}
-
-	# Fetch avg rating for reviews
-	avg_reviews=ProductReview.objects.filter(product=product).aggregate(avg_rating=Avg('review_rating'))
-	# End
-
-	return JsonResponse({'bool':True,'data':data,'avg_reviews':avg_reviews})

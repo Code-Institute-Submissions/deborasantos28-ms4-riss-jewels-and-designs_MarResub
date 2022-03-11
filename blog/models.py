@@ -4,10 +4,10 @@ from django.core.validators import MaxLengthValidator
 from django.contrib.auth.models import User
 
 
-class BlogEntry(models.Model):
+class BlogPost(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name='blog_entries')
+                               related_name='blog_posts')
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     content = models.TextField()
@@ -23,7 +23,7 @@ class BlogEntry(models.Model):
 
 class Comment(models.Model):
 
-    post = models.ForeignKey(BlogEntry, on_delete=models.CASCADE,
+    post = models.ForeignKey(BlogPost, on_delete=models.CASCADE,
                              related_name='comments')
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField(validators=[MaxLengthValidator(500)])

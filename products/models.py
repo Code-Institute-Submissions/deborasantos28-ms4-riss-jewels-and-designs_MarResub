@@ -31,22 +31,3 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-
-
-
-# Product Review
-rating=(
-    (1, '1'),
-    (2, '2'),
-    (3, '3'),
-    (4, '4'),
-    (5, '5'),
-)
-class ProductReview(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
-    product=models.ForeignKey(Product, on_delete=models.CASCADE)
-    review_text=models.TextField()
-    review_rating=models.CharField(choices=rating,max_length=150)
-
-    def get_review_rating(self):
-        return self.review_rating

@@ -40,69 +40,6 @@
 
                 {% if product.rating %}
                 <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
-                {% if user.is_authenticated %}
-                {% if canAdd %}
-                <button type="button" data-target="#productReview" class="btn btn-outline-black rounded-0 btn-sm">
-                    Add Review</button>
-                {% endif %}
-                {% endif %}
-
-                <!-- Product Review -->
-                {% if user.is_authenticated %}
-                <div class="modal fade" id="productReview" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add Product Review</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" id="addForm" action="{% url 'save-review' data.id %}">
-                                    {% csrf_token %}
-                                    <table class="table table-bordered">
-                                        {{ReviewForm.as_table}}
-                                        <tr>
-                                            <td colspan="2">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                <input type="reset" class="btn btn-dark" value="Reset" id="reset" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <p class="ajaxRes"></p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
-                <div class="card">
-                    <div class="card-body review-list" style="max-height: 400px; overflow: auto;">
-                        
-                        {% if reviews %}
-                        {% for review in reviews %}
-                        <blockquote class="blockquote text-right">
-                            <small>{{review.review_text}}</small>
-                            <footer class="blockquote-footer">{{review.user}}
-                                <cite title="Source Title">
-                                    {% for star in review.review_rating|ljust:review.review_rating %}
-                                    <i class="fa fa-star text-warning"></i>
-                                    {% endfor %}
-                                </cite>
-                            </footer>
-                        </blockquote>
-                        <hr />
-                        {% endfor %}
-                        {% else %}
-                        <p class="no-data">Add First Review</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-
         {% else %}
         <small class="text-muted">No Rating</small>
         {% endif %}
@@ -175,52 +112,6 @@
 {% endblock %}
 
 {% block postloadjs %}
-
-<!--Product Review-->
-<script type="text/javascript">
-    $("#addForm").submit(function (e) {
-        $.ajax({
-            data: $(this).serialize(),
-            method: $(this).attr('method'),
-            url: $(this).attr('action'),
-            dataType: 'json',
-            success: function (res) {
-                if (res.bool == true) {
-                    $(".ajaxRes").html('Data has been added.');
-                    $("#reset").trigger('click');
-                    // Hide Button
-                    $(".reviewBtn").hide();
-                    // End
-
-                    // create data for review
-                    var _html = '<blockquote class="blockquote text-right">';
-                    _html += '<small>' + res.data.review_text + '</small>';
-                    _html += '<footer class="blockquote-footer">' + res.data.user;
-                    _html += '<cite title="Source Title">';
-                    for (var i = 1; i <= res.data.review_rating; i++) {
-                        _html += '<i class="fa fa-star text-warning"></i>';
-                    }
-                    _html += '</cite>';
-                    _html += '</footer>';
-                    _html += '</blockquote>';
-                    _html += '</hr>';
-
-                    $(".no-data").hide();
-
-                    // Prepend Data
-                    $(".review-list").prepend(_html);
-
-                    // Hide Modal
-                    $("#productReview").modal('hide');
-
-                    // AVg Rating
-                    $(".avg-rating").text(res.avg_reviews.avg_rating.toFixed(1))
-                }
-            }
-        });
-        e.preventDefault();
-    });
-</script>
 {{block.super}}
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}

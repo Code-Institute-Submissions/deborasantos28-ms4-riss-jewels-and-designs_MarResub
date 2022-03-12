@@ -74,7 +74,7 @@
 
  # Structure
 
- ### This website is made up of 4 pages
+ ### This website is made up of 5 pages
  * The homepage which consists of: 
    * A responsive navbar
    * A search bar
@@ -106,6 +106,11 @@
   * User Profile with personal information (like order history and summary)
   * Updating possibility 
   * If not already a registered user, a form will be given to be able to register with the store
+
+* Blog
+  * A place for registered users to interact
+  * An area where the shop owner can keep the clients updated
+  * If the user is not registered, it will be prompted to log in or create an account
 
 
 # Features
@@ -341,14 +346,40 @@
 
 
 
+
+
+
+* Blog
+
+<img src="media/Blog's main page.png" width="500">
+
+
+
+* In the Blog area, the user is expected to find a group of posts which are shown in order from most recent to the oldest.
+* Each post is displayed as a card which contains a small preview of that specific articles content. A "Read more" button is provided so that the user is able to read the full post in a separate page.
+* Each post contains their own detail page where the user can read the full article which will now occupy the whole screen.
+* At the bottom of every post, the user is able to leave a comment in the comment section, allowing them to express their opinions and be able to discuss the post with other users.
+* Registered users will also be able to delete their own posts. A delete model will be displayed to the user asking if they are certain about deleting the post.
+* Articles and Comments will only be able to be posted by registered users.
+
+<img src="media/Blog's Dropdown menu.png" width="500">
+
+
+<img src="media/Blogs detail page.png" width="500">
+
+
+<img src="media/Blogs Edit post.png" width="500">
+
+
+<img src="media/Blogs delete modal.png" width="500">
+
+
 ## Typography for this project
   * I decided to use [Google Fonts](https://fonts.google.com/), as it is reliable and the safest font source. <br> I have used the Font *Great Vibes* for my project as I thought it fit quite well with the theme of the website.
 
 
 ## Features Left to implement
 * A review model
-* A blog 
-* Better styling for image display such as Lightbox
 
 # Technologies Used
 
@@ -391,7 +422,7 @@
     * [PEP8 online](http://pep8online.com/)
 
 
-# Database SChema
+# Database Schema
 
 
 <img src="media/Riss Jewels & Designs DB Schema.jpeg">

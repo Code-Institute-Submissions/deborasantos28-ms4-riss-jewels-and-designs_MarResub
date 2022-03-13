@@ -39,7 +39,8 @@
                 {% endif %}
 
                 {% if product.rating %}
-                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                <small class="text-muted"><i class="fas fa-star mr-1"></i>{% if product.rating == 0 %}No ratings
+                    yet{% else %}{{ product.rating|floatformat:1 }}{% endif %}</small>
                 {% else %}
                 <small class="text-muted">No Rating</small>
                 {% endif %}
@@ -110,65 +111,82 @@
                 </form>
             </div>
         </div>
-        <h2 class="subtitle">Reviews</h2>
-
-        <div class="reviews-wrapper">
-            {% for review in product.reviews.all %}
-            <div class="notification space-below">
-                <p>
-                    <strong>Date: </strong>{{ review.date_added|date:"Y-m-d" }},
-                    <strong>Stars: </strong>{{ review.stars }}
-                </p>
-
-                {{ review.content }}
-            </div>
-            {% empty %}
-            <div class="notification space-below">
-                No reviews yet...
-            </div>
-            {% endfor %}
-        </div>
-
-        <div class="notification space-below">
-            {% if request.user.is_authenticated %}
-            <form method="POST" action=".">
-                {% csrf_token %}
-
-                <div class="field">
-                    <label>Stars</label>
-
-                    <div clas="control">
-                        <div class="select">
-                            <select name="stars">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3" selected>3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label>Content</label>
-
-                    <div class="control">
-                        <textarea class="textarea" name="content"></textarea>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-success">Submit</button>
-                    </div>
-                </div>
-            </form>
-            {% else %}
-            <p>Please sign in to add review!</p>
-            {% endif %}
-        </div>
     </div>
+
+    <!----- Product Reviews Section ------------------------------->
+    <div class="container-fluid review-container pt-5 pb-5">
+        <!----- Product Reviews ----------------------------------->
+        <div class="row">
+            <div class="col-12 col-md-10 col-lg-6 offset-lg-3">
+                <h1 class="text-center underline">Reviews</h1>
+                {% for review in reviews %}
+                    <!----- If Review, Displays to User ----->
+                    <div class="card mt-5 rounded-0">
+                        <!----- Review Card ----->
+                        <div class="card-body">
+                            <p class="small text-muted"> by {{ review.user }} on {{ review.date_added|date:"d-m-Y"}}</p>
+                            <p class="card-title">{{ review.title }}<i class="mx-2 fas fa-star"></i>{{ review.rating }}/5</p>
+                            <p class="card-text lead">{{ review.content }}</p>
+                        </div>
+                        <!----- Edit Review Button ----->
+                        {% if review.user == request.user or request.user.is_superuser %}
+                            <div class="card-head">
+                                <a class="btn btn-color rounded-0 btn-sm review-button" href="{% url 'edit_review' review.id %}#reviews">
+                                    <i class="fas fa-edit"></i> Edit Review
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% empty %}
+                    <!----- If No Reviews, Displays Text ----->
+                    <div class="text-center mt-5">
+                        <p class="review-text">No reviews yet! Why not leave the first?</p>
+                    </div>
+                {% endfor%}
+            </div>
+        </div>
+        <!----- Review Form --------------------------------------->
+        <div id="reviews" class="row">
+            <div class="col-12 col-md-10 col-lg-4 offset-lg-4">
+                <!----- hr To Display If No Reviews ----->
+                {% for review in product.reviews.all %}
+                {% empty %}
+                    <hr>
+                {% endfor %}
+                {% if request.user.is_authenticated %}
+                    <h5 class="text-center underline mt-4 mb-2">Write your review here!</h5>
+                {% else %}
+                    <p class="review-text text-center mt-4">
+                        <a href="{% url 'account_signup' %}">Register</a> or <a href="{% url 'account_login' %}">Log In</a> to leave a review!
+                    </p>
+                {% endif %}
+                <!----- Form Display If User ----->
+                {% if request.user.is_authenticated %}
+                    {% if edit %}
+                        <!----- Edit Existing Review ----->
+                        <form method="POST" action="{% url 'edit_review' review.id %}#reviews">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-center mt-3">
+                                <button class="btn btn-color rounded-0 text-uppercase" type="submit">Update Review</button>
+                            </div>
+                        </form>
+                    {% else %}
+                        <!----- Submit New Review ----->
+                        <form method="POST" action="{% url 'add_review' product.id %}#reviews">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-center mt-3">
+                                <button class="btn btn-color rounded-0 text-uppercase" type="submit">Submit Review</button>
+                            </div>
+                        </form>
+                    {% endif %}
+                {% endif %}
+
+
+
+
+</div>
 </div>
 </div>
 {% endblock %}

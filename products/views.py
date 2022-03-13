@@ -4,11 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category, ProductReview
+from .forms import ReviewForm, ProductForm
 
 # Create your views here.
 
+
 def all_products(request):
-    """ A view to show all products, including sorting and search queries """
+    """A view to show all products, including sorting and search queries"""
 
     products = Product.objects.all()
     query = None
@@ -17,93 +19,88 @@ def all_products(request):
     direction = None
 
     if request.GET:
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
+        if "sort" in request.GET:
+            sortkey = request.GET["sort"]
             sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
-            if sortkey == 'category':
-                sortkey = 'category__name'
-            
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
+            if sortkey == "name":
+                sortkey = "lower_name"
+                products = products.annotate(lower_name=Lower("name"))
+            if sortkey == "category":
+                sortkey = "category__name"
+
+            if "direction" in request.GET:
+                direction = request.GET["direction"]
+                if direction == "desc":
+                    sortkey = f"-{sortkey}"
             products = products.order_by(sortkey)
 
-
-        if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
+        if "category" in request.GET:
+            categories = request.GET["category"].split(",")
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
     if request.GET:
-        if 'q' in request.GET:
-            query = request.GET['q']
+        if "q" in request.GET:
+            query = request.GET["q"]
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('products'))
-            
+                return redirect(reverse("products"))
+
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
-
-    current_sorting = f'{sort}_{direction}'
+    current_sorting = f"{sort}_{direction}"
 
     context = {
-        'products': products,
-        'search_term': query,
-        'current_categories': categories,
-        'current_sorting': current_sorting,
+        "products": products,
+        "search_term": query,
+        "current_categories": categories,
+        "current_sorting": current_sorting,
     }
 
-    return render(request, 'products/products.html', context)
+    return render(request, "products/products.html", context)
 
 
 def product_details(request, product_id):
-    """ A view to show individual product details """
+    """
+    A view to return the dedicated product page with product description
+    """
+    form = ReviewForm()
+    product = Product.objects.get(id=product_id)
+    reviews = ProductReview.objects.filter(product=product)
 
-    product = get_object_or_404(Product, pk=product_id)
-    
-    if request.method == 'POST' and request.user.is_authenticated:
-        stars = request.POST.get('stars', 3)
-        content = request.POST.get('content', '')
-
-        review = ProductReview.objects.create(product=product, user=request.user, stars=stars, content=content)
-
-        return redirect('product_detail', request, pk=product_id)
-    
     context = {
-        'product': product
+        'product': product,
+        'form': form,
+        'reviews': reviews
     }
 
     return render(request, 'products/product_details.html', context)
 
-
 @login_required
 def add_product(request):
-    """ Add a product to the store """
+    """Add a product to the store"""
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
 
-
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
             form.save()
-            messages.success(request, 'Successfully added product!')
-            return redirect(reverse('product_details', args=[product.id]))
+            messages.success(request, "Successfully added product!")
+            return redirect(reverse("product_details", args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request, "Failed to add product. Please ensure the form is valid."
+            )
     else:
         form = ProductForm()
-        
-    template = 'products/add_product.html'
+
+    template = "products/add_product.html"
     context = {
-        'form': form,
+        "form": form,
     }
 
     return render(request, template, context)
@@ -111,28 +108,30 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    """ Edit a product in the store """
+    """Edit a product in the store"""
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
 
     product = get_object_or_404(Product, pk=product_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('product_details', args=[product.id]))
+            messages.success(request, "Successfully updated product!")
+            return redirect(reverse("product_details", args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request, "Failed to update product. Please ensure the form is valid."
+            )
     else:
         form = ProductForm(instance=product)
-        messages.info(request, f'You are editing {product.name}')
+        messages.info(request, f"You are editing {product.name}")
 
-    template = 'products/edit_product.html'
+    template = "products/edit_product.html"
     context = {
-        'form': form,
-        'product': product,
+        "form": form,
+        "product": product,
     }
 
     return render(request, template, context)
@@ -140,14 +139,71 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from the store """
+    """Delete a product from the store"""
     if not request.user.is_superuser:
-        messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        messages.error(request, "Sorry, only store owners can do that.")
+        return redirect(reverse("home"))
 
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
-    messages.success(request, 'Product deleted!')
-    return redirect(reverse('products'))
+    messages.success(request, "Product deleted!")
+    return redirect(reverse("products"))
 
 
+# Reviews
+
+@login_required
+def add_review(request, product_id):
+    """ Allow user to add review """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                review = form.save(commit=False)
+                review.product = product
+                review.user = request.user
+                review.save()
+                messages.success(request, 'Thank You! Your review \
+                    has been added!')
+                return redirect(reverse('product_details', args=[product.id]))
+            else:
+                messages.error(request, 'Oops, something went wrong! \
+                    Please try adding your review again.')
+    context = {
+        'form': form
+    }
+    return render(request, context)
+
+
+@login_required
+def edit_review(request, review_id):
+    """ Allow user to edit their review """
+
+    review = get_object_or_404(ProductReview, pk=review_id)
+    product = review.product
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Your review has been amended!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to edit your \
+                review, please try again!')
+
+    else:
+        form = ReviewForm(instance=review)
+
+    messages.info(request, 'You are currently editing your review.')
+    template = 'products/product_details.html'
+    context = {
+        'form': form,
+        'review': review,
+        'product': product,
+        'edit': True,
+    }
+    return render(request, template, context)

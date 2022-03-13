@@ -1,0 +1,660 @@
+[{
+        "model": "products.category",
+        "pk": 1,
+        "fields": {
+            "name": "jewelry",
+            "friendly_name": "Jewelry"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 2,
+        "fields": {
+            "name": "earrings",
+            "friendly_name": "Earrings"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 3,
+        "fields": {
+            "name": "necklaces",
+            "friendly_name": "Necklaces"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 4,
+        "fields": {
+            "name": "bracelets",
+            "friendly_name": "Bracelets"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 5,
+        "fields": {
+            "name": "resin_ornaments",
+            "friendly_name": "Resin Ornaments"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 6,
+        "fields": {
+            "name": "dream_catchers",
+            "friendly_name": "Dream Catchers"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 7,
+        "fields": {
+            "name": "new_items",
+            "friendly_name": "New Items"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 8,
+        "fields": {
+            "name": "sale",
+            "friendly_name": "Sale"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 9,
+        "fields": {
+            "name": "clearance",
+            "friendly_name": "Clearance"
+        }
+    }, {
+        "model": "products.category",
+        "pk": 10,
+        "fields": {
+            "name": "homeware",
+            "friendly_name": "Homeware"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 15,
+        "fields": {
+            "category": 6,
+            "sku": "Dre/Bea/Rin/Gre",
+            "name": "Beaded Dream Catcher",
+            "has_sizes": false,
+            "description": "A bespoke Dream Catcher made of yarn and wool, exquisitely crested with upcycled beads.",
+            "price": "15.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20190714_123126_BQCVY9q.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 16,
+        "fields": {
+            "category": 3,
+            "sku": "Nec/Sue/Lea/Bla",
+            "name": "Egyptian Inspired Necklace",
+            "has_sizes": false,
+            "description": "If you are fond of Egyptian history and are looking for a lovely adornment to represent just that.\r\nThis Egyptian-inspired necklace will suit your needs.\r\nMade of leather and suede cord and adorned with the Egyptian Scarab.",
+            "price": "8.99",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20191123_203636-min_mpueiKa.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 17,
+        "fields": {
+            "category": 9,
+            "sku": "Woo/Bas/Yar/Sof",
+            "name": "Chenille Basket",
+            "has_sizes": false,
+            "description": "A small basket made of chenille yarn.\r\nSuitable for small children or simply as a soft adornment to place light items in.",
+            "price": "5.00",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20200216_195118_ByzBeZr.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 18,
+        "fields": {
+            "category": 10,
+            "sku": "Rug/Lar/Woo/Mus",
+            "name": "Multi-coloured Rug",
+            "has_sizes": true,
+            "description": "A handwoven bespoke rug, made with velvet chunky yarn. \r\nSuitable as a simple decoration or as a playmat for children due to its soft nature.\r\n\r\nAvailable in different colors as a request.",
+            "price": "30.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20200610_171515_59PIizP.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 19,
+        "fields": {
+            "category": 10,
+            "sku": "Rug/Lar/Vel/Gre",
+            "name": "Multi-coloured Rug",
+            "has_sizes": false,
+            "description": "A handwoven bespoke rug, made with velvet chunky yarn. \r\nSuitable as a simple decoration or as a playmat for children due to its soft nature.\r\n\r\nAvailable in different colors as a request.",
+            "price": "30.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20200610_205400_JSVxWAo.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 20,
+        "fields": {
+            "category": 4,
+            "sku": "Bra/Mur/Gla/Red",
+            "name": "Murano Bead Bracelet",
+            "has_sizes": true,
+            "description": "A beautiful bespoke Murano glass bead bracelet, ready to be worn for any occasion.",
+            "price": "10.00",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20200715_123315_WmSEhd6.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 21,
+        "fields": {
+            "category": 4,
+            "sku": "Blu/Mur/Gla/Bea",
+            "name": "Blue Murano Bracelet",
+            "has_sizes": true,
+            "description": "A blue Murano glass beaded Bracelet, made with a different pattern of blue.",
+            "price": "10.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20200715_123533_MySXY6E.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 22,
+        "fields": {
+            "category": 4,
+            "sku": "Whi/Mur/Gla/Bea",
+            "name": "Multi-colored Murano Bracelet",
+            "has_sizes": true,
+            "description": "A multi-colored Flecked-White Murano glass beaded bracelet.\r\nMade with white and off-white beads to create a cloudy look to the bead itself.",
+            "price": "10.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20200715_123938_QECsSun.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 23,
+        "fields": {
+            "category": 4,
+            "sku": "Gre/Cle/Mur/Bea",
+            "name": "Green Clear Murano Bead Bracelet",
+            "has_sizes": true,
+            "description": "This is a Green / Clear Murano Glass Beaded Bracelet, perfect for any occasion.\r\nPerfect if looking for natural colors to complement an outfit.",
+            "price": "10.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20200715_124139_u0Al9pg.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 24,
+        "fields": {
+            "category": 4,
+            "sku": "Ora/Gla/Mur/Bea",
+            "name": "Orange Glass Murano Bead Bracelet",
+            "has_sizes": true,
+            "description": "An Orange glass Beaded Murano Beaded bracelet, with the middle beads differing slightly with their own unique patterns.",
+            "price": "10.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20200715_124426_DHWKdUq.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 25,
+        "fields": {
+            "category": 4,
+            "sku": "Mur/Bea/Bra/Pac",
+            "name": "Glass Murano Beads Pack",
+            "has_sizes": true,
+            "description": "A Pack of the Murano Beads collection comes with all the bracelets in the correct choice of size.\r\nEnjoy now the full collection of these bracelets. Perfect for any occasion.",
+            "price": "40.00",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20200715_124810_RPqthJC.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 26,
+        "fields": {
+            "category": 3,
+            "sku": "Cho/Rib/Pol/But",
+            "name": "Butterfly Pendant Choker",
+            "has_sizes": true,
+            "description": "Made with an upcycled polka dot Ribbon, this choker is adorned with a butterfly pendant, and latches on with a silver crab claw clasp.",
+            "price": "8.00",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20200715_183326_u8Zrjk2.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 27,
+        "fields": {
+            "category": 3,
+            "sku": "Upc/Bea/Plas",
+            "name": "Upcycled  Bead Necklace",
+            "has_sizes": false,
+            "description": "Bespoke Necklace made with upcycled blue beads and a small butterfly pendant all coming together with a soft red ribbon.",
+            "price": "8.99",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20200725_1435552.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 28,
+        "fields": {
+            "category": 4,
+            "sku": "Cha/Bra/Lea/Cor",
+            "name": "Charm Bracelet",
+            "has_sizes": false,
+            "description": "A custom charm bracelet made with leather cord and coming together with a silver clasp and an adjustable chain link.",
+            "price": "10.00",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20200725_174821_78N9AcG.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 29,
+        "fields": {
+            "category": 4,
+            "sku": "Bra/Cer/Bea/Lea",
+            "name": "Ceramic Bead Bracelet",
+            "has_sizes": false,
+            "description": "These glazed ceramic beads have been upcycled and put together in a bracelet with some bespoke charms and woven together with a leather cord. \r\nEasily adjustable due to the silver clasp and the silver links.",
+            "price": "9.00",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20200725_185944_oR459UC.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 30,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Sil",
+            "name": "Resin Earrings 6 Pack",
+            "has_sizes": false,
+            "description": "This is a 6 pack offer of the bespoke purple resin earrings. \r\nWhy have just one pair, when you can have 6?",
+            "price": "20.00",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20201008_152000_2jwBd9L.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 34,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Pac",
+            "name": "Purple earrings 6-pack",
+            "has_sizes": false,
+            "description": "A pack of 6 big hooped resin earrings.",
+            "price": "14.50",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20201008_152949_ZWCE4Y0.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 38,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Sin",
+            "name": "Fan Shaped Resin Earrings",
+            "has_sizes": false,
+            "description": "A pair of fan-shaped resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.00",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_1520436_EwzXGJg.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 39,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Sin",
+            "name": "Teardrop purple resin earrings",
+            "has_sizes": false,
+            "description": "A pair of teardrop-shaped resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.00",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_1520438_EKXHctd.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 40,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Ron",
+            "name": "Round Resin Purple Earrings",
+            "has_sizes": false,
+            "description": "A pair of round-shaped resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.00",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_1521120_sPhR2R6.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 41,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Squ",
+            "name": "Square Resin Purple Earrings",
+            "has_sizes": false,
+            "description": "A pair of square-shaped resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.00",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_1521125_eb4zT3T.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 42,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Rec",
+            "name": "Chunky Rectangle Resin Earrings",
+            "has_sizes": false,
+            "description": "A pair of rectangle-shaped resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.50",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_1529581_ukdTntq.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 43,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Cir",
+            "name": "Open Circle Resin Earrings",
+            "has_sizes": false,
+            "description": "A pair of circle-shaped resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.50",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_1529588_PrYy5V6.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 44,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Hoo",
+            "name": "Hoop Resin Earrings",
+            "has_sizes": false,
+            "description": "A pair of open hoop resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.50",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_1530036_8WvNGr0.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 45,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Ope/Tea",
+            "name": "Open Teardrop shape earrings",
+            "has_sizes": false,
+            "description": "A pair of open teardrop resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.50",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_15300336_yLkHPxK.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 46,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Ova",
+            "name": "Open Oval-shaped",
+            "has_sizes": false,
+            "description": "A pair of open oval-shaped resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.50",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20201008_15301555_jnlbJ9P.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 47,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Pur/Open",
+            "name": "Round Resin Earrings with small opening",
+            "has_sizes": false,
+            "description": "A pair of round and small opening resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin and Purple tint. \r\n\r\nPerfect for all occasions.",
+            "price": "5.50",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20201008_153015326_uByvpTV.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 48,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Cle/Spa",
+            "name": "Clear Resin Earrings 7 pack",
+            "has_sizes": false,
+            "description": "A 7-pack pair of clear resin earrings, with glitter and sparkles, ready to adorn and be adored. \r\n\r\nPerfect for all occasions.",
+            "price": "20.00",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20201010_144000_FF1vQMH.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 52,
+        "fields": {
+            "category": 2,
+            "sku": "Cle/Res/Ear",
+            "name": "Open Circle Clear Resin Earrings",
+            "has_sizes": false,
+            "description": "A pair of open circle resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin, Sparkles, and Glitter.\r\n\r\nShine your way through anything.",
+            "price": "5.50",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20201010_144343_U0JrXnr.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 53,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Cle/Res/Hoo",
+            "name": "Open Hoop Clear Resin Earring",
+            "has_sizes": false,
+            "description": "A pair of full open hoop resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin Sparkles and Glitter.\r\n\r\nShine your way through anything.",
+            "price": "5.50",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20201010_144405_auhvxMH.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 54,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Cle/Rec",
+            "name": "Rectangle Clear Resin Earrings",
+            "has_sizes": false,
+            "description": "A pair of rectangle resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin Sparkles and Glitter.\r\n\r\nShine your way through anything.",
+            "price": "5.50",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20201010_144427_2MQBYgi.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 55,
+        "fields": {
+            "category": 7,
+            "sku": "Ear/Cle/Res/Pac",
+            "name": "Clear Resin Earrings 3 pack",
+            "has_sizes": false,
+            "description": "A pack of 3 pairs of resin earrings, ready to adorn and be adored. \r\n\r\nMade with Clear Resin Sparkles and Glitter.\r\n\r\nShine your way through anything.",
+            "price": "12.78",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20201010_144644_UWbSZtd.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 56,
+        "fields": {
+            "category": 3,
+            "sku": "Zod/Nec/Pen",
+            "name": "Zodiac Necklaces",
+            "has_sizes": false,
+            "description": "This Zodiac-inspired necklace collection is one of a kind. \r\nThe pendant is made of resin and adorned with the hand-painted Star Sign of choice. \r\n\r\n\r\nThis item can be sold separately or in bulk.\r\nThey are fully customizable color wise,  as per client requirements.",
+            "price": "5.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210110_154240_J0UF9M1.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 57,
+        "fields": {
+            "category": 7,
+            "sku": "Ear/Cel/Res",
+            "name": "Celtic Knot Earring",
+            "has_sizes": false,
+            "description": "Celtic Knot Charm Earring, complemented by a little small purple resin shape. \r\n\r\nThis Design is part of an upcoming collection of Symbols.",
+            "price": "5.00",
+            "rating": "4.00",
+            "image_url": null,
+            "image": "IMG_20210130_124936_bwPwfRi.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 58,
+        "fields": {
+            "category": 8,
+            "sku": "Key/Res/Char",
+            "name": "Bespoke Letter Keyrings",
+            "has_sizes": false,
+            "description": "A collection of Letter Keyrings made with clear resin and glitter. \r\n\r\nThese items can be sold separately or in bulk, and they are fully customizable when it comes to the choice of colors.",
+            "price": "4.50",
+            "rating": "3.00",
+            "image_url": null,
+            "image": "IMG_20210208_174901_x2FHitg.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 59,
+        "fields": {
+            "category": 10,
+            "sku": "Res/Orn/Fai/Cle",
+            "name": "Moon Fairy Resin Ornament",
+            "has_sizes": false,
+            "description": "This beautiful Moon Fairy Ornament is part of the Homeware range, \r\nMake your space look extra magical with this Ornament.\r\n\r\nThis piece is made out of Clear resin and dried flowers.",
+            "price": "15.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210214_155555_73hbWHv.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 60,
+        "fields": {
+            "category": 10,
+            "sku": "Res/Orn/Wol/Cle",
+            "name": "Wolf Resin Ornament",
+            "has_sizes": false,
+            "description": "Have a howling experience by having this amazing centerpiece on your house. \r\n\r\nThis Ornament is solidly made of clear resin with dried flowers.",
+            "price": "15.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210214_155649_60quJVi.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 61,
+        "fields": {
+            "category": 10,
+            "sku": "Orn/Cat/Res",
+            "name": "Cat Ornament Clear Resin",
+            "has_sizes": false,
+            "description": "A beautiful and unique piece for your own space. \r\n\r\nWith a Moon and Cat Silhouette, made of clear resin with dried flowers.",
+            "price": "15.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210214_155753_zQyZEiK.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 62,
+        "fields": {
+            "category": 10,
+            "sku": "Orn/Uni/Cle/Res",
+            "name": "Unicorn Ornament Resin",
+            "has_sizes": false,
+            "description": "A truly magical experience to bring into your living room.\r\n\r\nKeep your imagination alive with this amazing clear resin unicorn ornament.\r\nAdorned with dried flowers.",
+            "price": "15.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210214_155835_LuFCa70.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 63,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Bea/Sto",
+            "name": "Howlite Stone Earrings",
+            "has_sizes": false,
+            "description": "Howlite Stones in White & Grey with tiny pearl white beads.",
+            "price": "10.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210328_130830_EjDS0eE.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 64,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Res/Sto",
+            "name": "Obsidian Stone earrings",
+            "has_sizes": false,
+            "description": "Black & White Obsidian Stones, with tiny red beads to finish. \r\nAlso with Sterling Silver hooks.",
+            "price": "10.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210321_121955_skh5WsG.jpg"
+        }
+    }, {
+        "model": "products.product",
+        "pk": 65,
+        "fields": {
+            "category": 2,
+            "sku": "Ear/Sto/Bea",
+            "name": "Amazonite Stone Earrings",
+            "has_sizes": false,
+            "description": "Amazonite Stones with tiny ice blue beads and sterling silver hooks.\r\n\r\nPerfectly matched with your spring outfit.",
+            "price": "10.00",
+            "rating": "5.00",
+            "image_url": null,
+            "image": "IMG_20210328_161508_gQoDRLC.jpg"
+        }
+    }
+]

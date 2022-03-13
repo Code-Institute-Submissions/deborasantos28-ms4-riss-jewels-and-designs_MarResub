@@ -1,0 +1,12 @@
+[{
+    "model": "blog.blogpost",
+    "pk": 2,
+    "fields": {
+        "author": 1,
+        "title": "A new product range is arriving!",
+        "slug": "a-new-product-range-is-arriving",
+        "content": "Matching earrings with their stone crystals will be arriving soon!\r\nStay tuned for more news.",
+        "image": "IMG_20210429_115330_OF8epl9.jpg",
+        "date_posted": "2022-03-12T13:36:38.201Z"
+    }
+}]

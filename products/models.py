@@ -3,10 +3,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
-
     class Meta:
-        verbose_name_plural = 'Categories'
-        
+        verbose_name_plural = "Categories"
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -31,20 +30,30 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-    def get_rating(self):
-        total = sum(int(review['stars']) for review in self.reviews.values())
-
-        if self.reviews.count() > 0:
-            return total / self.reviews.count()
-        else:
-            return 0
-
 
 class ProductReview(models.Model):
-    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name='reviews', on_delete=models.CASCADE)
+    """
+    Product Review Model
+    """
+    class Meta:
+        ordering = ['-date_added']
+        verbose_name_plural = 'Product Reviews'
 
-    content = models.TextField(blank=True, null=True)
-    stars = models.IntegerField()
-
+    rating_selection = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+    product = models.ForeignKey(Product, related_name='product_reviews', null=True,
+                                blank=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, null=True, blank=True,
+                             on_delete=models.CASCADE)
+    title = models.CharField(max_length=254)
+    content = models.TextField()
+    rating = models.IntegerField(choices=rating_selection, default=5)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

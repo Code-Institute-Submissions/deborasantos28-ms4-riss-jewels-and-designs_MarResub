@@ -177,6 +177,16 @@ input[name='q']::placeholder {
     overflow-y: auto;
 }
 
+/* ------------------------------- Product Review */
+
+.review-button {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

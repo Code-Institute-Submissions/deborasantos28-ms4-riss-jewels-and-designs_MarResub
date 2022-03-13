@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ms4_riss_jewels_and_designs.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ms4_riss_jewels_and_designs.settings")
 
 application = get_wsgi_application()

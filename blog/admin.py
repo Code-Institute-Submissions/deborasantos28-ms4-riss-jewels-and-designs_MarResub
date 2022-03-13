@@ -8,14 +8,21 @@ class CommentInline(admin.TabularInline):
 
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('date_posted', 'title', 'slug')
-    search_fields = ['title', 'content']
-    inlines = [CommentInline, ]
+    '''Parameters to be displayed in the Admin page
+    '''
+
+    list_display = ("date_posted", "title", "slug")
+    search_fields = ["title", "content"]
+    inlines = [
+        CommentInline,
+    ]
 
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('date_posted', 'post', 'body', 'username')
-    search_fields = ['username', 'body']
+    '''Parameters to be displayed in the Admin page
+    '''
+    list_display = ("date_posted", "post", "body", "username")
+    search_fields = ["username", "body"]
 
 
 admin.site.register(BlogPost, BlogPostAdmin)

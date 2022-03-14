@@ -90,7 +90,7 @@
    * Back to the top button
 
  * Shopping Basket 
-  * Displays all the irems added to the bag
+  * Displays all the items added to the bag
   * Items and descriptions are displayed
   * Quantity selector
   * Size selector
@@ -99,7 +99,7 @@
 
 * Checkout
   * Checkout for the users details, billing information and payment details
-  *  If not a registed user it will be asked to sign in or register
+  *  If not a registered user it will be asked to sign in or register
   * Proceed to payment button or adjust basket button
 
 * Profile 
@@ -218,7 +218,7 @@
 
 
   * The add a product area is accessible to Admin only.
-  * In this area the Admin user is able to add a new product by completing the form showned above.
+  * In this area the Admin user is able to add a new product by completing the form displayed above.
   * The form is compiled by 8 parameters:
     * Category (with a dropdown menu category selector)
     * SKU
@@ -259,7 +259,7 @@
 
 * Delete Product (Admin Only)
 
-  * Deleting a product can be done so throught the delete button next to the edit button on the products details page. Or in the overall product display. A small button is located under the image. 
+  * Deleting a product can be done so through the delete button next to the edit button on the products details page. Or in the overall product display. A small button is located under the image. 
   * This is an admin only function.
   * Deleting a product can be done so through the main page or by logging into the admin and deleting it directly from there.
 
@@ -360,7 +360,7 @@
   * After processing through the Shopping basket, the user will be taken through to the checkout page where it will be prompt with a form to be completed with all their personal information, along with the delivery details and finally their payment details.
   * At the bottom of the page, if the user feels like there is still something else they would like to add or delete, they can easily return to the basket area by pressing the button to Adjust Basket.
   * After all the payment details, billing information and personal details have been filled, the user can now complete the order by pressing the button at the bottom of the page.
-  * After the payment has through successfully the user will be greated with their confirmation order.
+  * After the payment has through successfully the user will be greeted with their confirmation order.
 
 <img src="media/confirmation-order.png" width="500">
 
@@ -497,7 +497,7 @@
 * I've taken some inspiration from mitchdavenport88 Readme.md 
 
 * A huge thank you to my family and friends for testing the website and give me feedback that was so valuable when making this project.
-* A huge thank you mostly to my partner for letting me use her products to create her ficticions store. All her products are incredibly well made and with lots of hours of hardwork into them. I couldn't be more proud to be able to showcase her products (even if it is a ficticious purpose only).
+* A huge thank you mostly to my partner for letting me use her products to create her ficticious store. All her products are incredibly well made and with lots of hours of hardwork into them. I couldn't be more proud to be able to showcase her products (even if it is a ficticious purpose only).
 
 ## Contents
 

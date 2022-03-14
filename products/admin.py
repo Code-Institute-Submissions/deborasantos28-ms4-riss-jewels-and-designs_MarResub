@@ -5,6 +5,10 @@ from .models import Product, Category, ProductReview
 
 
 class ProductAdmin(admin.ModelAdmin):
+    '''A function that displays a list
+    of product parameters in the
+    admin interface'''
+
     list_display = (
         "sku",
         "name",
@@ -16,6 +20,10 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    '''A function that displays the category
+    names with a friendly name on the
+    admin interface'''
+
     list_display = (
         "friendly_name",
         "name",

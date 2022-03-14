@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
+    '''
+    A model to display all the Categories
+    with a friendly name.
+    '''
+
     class Meta:
         verbose_name_plural = "Categories"
 
@@ -17,6 +22,9 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    '''
+    A model for all the Product fields
+    '''
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
@@ -46,8 +54,10 @@ class ProductReview(models.Model):
         (4, '4'),
         (5, '5'),
     )
-    product = models.ForeignKey(Product, related_name='product_reviews', null=True,
-                                blank=True, on_delete=models.SET_NULL)
+    product = models.ForeignKey(
+                                Product, related_name='product_reviews',
+                                null=True, blank=True,
+                                on_delete=models.SET_NULL)
     user = models.ForeignKey(User, null=True, blank=True,
                              on_delete=models.CASCADE)
     title = models.CharField(max_length=254)

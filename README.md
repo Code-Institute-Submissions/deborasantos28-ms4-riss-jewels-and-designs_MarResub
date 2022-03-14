@@ -263,6 +263,26 @@
   * This is an admin only function.
   * Deleting a product can be done so through the main page or by logging into the admin and deleting it directly from there.
 
+* Product Review
+
+  * In the review section the user reviews that can be viewed by all users, even if not registered
+  * The Product Review section is located in the Product Details page.
+  * If a user is registered and logged in, they can leave a review for the product of interest.
+  * A logged in user is able to edit and update their review.
+
+
+  * Product Review Main 
+<img src="media/ProductReview.png" width="500">
+
+
+  * Product Review Main part 2
+<img src="media/ProductReview part 2.png" width="500">
+
+
+  * Product Review Editing/Updating
+<img src="media/ProductReview edit.png" width="500">
+
+
 * Profile 
 
   * In this store the User is able to register for an account. It can do so by accessing the user menu on the top right corner of the page and clicking on the my profile icon. 

@@ -12,7 +12,7 @@
   * No errors were found when testing on the official [W3C Validator](https://validator.w3.org/)
 
 * Python 
-  * This code is Pep8 compliant but "Trailing whitespace" warning shows [Pep8 Online](http://pep8online.com/)
+  * All Tests Passed - But warnings and errors were given on most pages due to template logic being used in this project. Certain Python files also failed PEP8 checks due to base code set by Django. [Pep8 Online](http://pep8online.com/)
 
 ## Browser Compatibility 
  * This website has been tested and verified to work on various browsers such as : Chrome, Firefox and Edge.
@@ -213,6 +213,11 @@
     * Checked the edit product button opens the edit product form and also only is available for admin
     * Checked the delete product button triggers the *deleted successfully* toast, and that this is available for admin only.
     * Checked that all hover classes work.
+    * Verified that the Reviews section displays the reviews that users have left, and allows both the user who submitted the review and the admin to edit the review.
+    * Tested that If the user is logged in, a review form is displayed with the submit button underneath to be able to 
+    submit the review form once completed.
+    * Verified that a required field message should appear if the fields are trying to be submitted blank.
+    * Verified that the user is only able to leave a review if it is logged in. 
 
 * Expected Outcome
     * The correct product should be displayed when clicking on the product image
@@ -224,6 +229,8 @@
     * All buttons work as expected
     * Edit and Delete buttons should only be displayed for Admin only.
     * Edit and Delete Buttons should execute their funcionality accordingly
+    * The user should be able to read the reviews regardless of the user's registration status
+    * Only registered users should be able to leave a review
 
 
 * Test Outcome: **Pass**
@@ -465,6 +472,66 @@
     * A toast message appears confirming the deletion.
     * Checked that it can no longer be found on the site.
     * Checked that it can no longer be found in the database.
+
+
+## Blog
+
+* Test Action
+    * Tested that the page loads correctly and all is displayed as it should. 
+    * Checked that each post is aligned and displayed as a card as intended.
+    * Checked that each post contains:
+        * An image that displays and adjusts correctly, depending on the 
+        screen sizes. 
+    * Tested that the image is able to work as a link to the blog post.
+    * Tested that all the details are displayed, such as: 
+        * Date and Time posted
+        * The post title
+        * A post preview
+    * Tested that all the articles displayed are responsive at all breakpoints.
+
+## Blog Posts
+* Test Action
+    * Tested that the correct post is displayed when clicked on.
+    * Tested that all the content is displayed as it should.
+    * Checked that the title of the post is displayed correctly at the top of the page.
+    * Checked that all the posts details are displayed correctly. Such as: 
+        (Image, Time, Date, Author and Post content)
+    * Tested that the correct buttons are displayed based on the user’s registration status.
+    * Checked that the button that takes the user back to the main blog page appears for all users and 
+    that it exercises it's function to take the user back to the Blog's main page.
+    * Tested that the buttons for Edit and Delete appear for the admin only.
+    * Tested that the edit post button opens the edit blog form and updates the information accordingly.
+    * Checked the delete post button triggers the deletion modal.
+    * Tested that the comments section displays differently depending on the user's registration status.
+        * If the user is unregistered:
+            * the comment box will not be displayed and will be replaced with links to sign up or login (Tested that both of these links are working)
+            * Tested that even thought the user is not registered, it is still able to read the other users comments.
+
+        * If the user is registered:
+            * Verified that the comment box is shown along with a button to post a comment
+            * Verified that the placeholder is visible
+            * Tested that the form can’t be submitted empty
+            * Tested that the post is unable to surpass 500 characters long
+            * Verified that if a comment is valid a message is displayed
+            * Checked a toast message appears stating this.
+            * Verified that the comments are displayed below.
+            * Verified that if the post has no comments as of yet, a message stating is displayed.
+            * Verified that the page is responsive and everything is displayed correctly at all breakpoints.
+
+* Test Outcome: **Pass**
+
+# Resolved Issues
+* Issues with Migrations and database
+    * Due to an issue with migrations whilst trying to add the Products Review to the database, an recurring issue with the id of certain parameters kept appearing.
+    This issue got resolved with the help of a tutor (Sean), that helped me, and reset my db and migrations, to be able to resolve this issue.
+
+    * Due to a number of issues, while trying to add the new required models, It has caused me to make incredibly big git commits.
+    Resulting in quite large portions of code being pushed as opposed to smaller and more phased commits.
+
+# Unresolved Issues
+* Product reviews and rating not linked to product ratings (following Botique Ado's example for the product rating)
+    * Even thought I have implemented the product reviews and rating on my site, I was unable to decipher how to link both the reviews rating to the product rating. Ideally I would have liked to be able to link the both of them so that it could be updated accordingly when a user would leave a review. 
+    I tried following some examples from Stack Overflow, but nothing has helped to give me the end result I would have liked.
 
 
 
